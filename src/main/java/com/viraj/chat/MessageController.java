@@ -1,8 +1,11 @@
 package com.viraj.chat;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,14 +22,19 @@ public class MessageController {
 
 	@RequestMapping(value = "/show-chat", method = RequestMethod.GET)
 	public String showChat(ModelMap model) {
+		model.addAttribute("message", new Message(0, (String) model.get("name"), ""));
 		model.addAttribute("messages", service.getMessages());
 		System.out.println(model.get("name"));
 		return "show-chat";
 	}
 
 	@RequestMapping(value = "/send-message", method = RequestMethod.POST)
-	public String addTodo(ModelMap model, @RequestParam String message) {
-		service.sendMessage("viraj", message);
+	public String send(ModelMap model, @Valid Message message, BindingResult result) {
+		if (result.hasErrors()) {
+			return "show-chat";
+		}
+
+		service.sendMessage((String) model.get("name"), message.getMessage());
 		model.clear();
 		return "redirect:/show-chat";
 	}

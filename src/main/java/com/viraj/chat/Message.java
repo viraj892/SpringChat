@@ -1,11 +1,18 @@
 package com.viraj.chat;
 
+import javax.validation.constraints.Size;
+
 public class Message {
 	private int id;
 	private String user;
+	@Size(min = 5, message = "Enter atleast 5 characters")
 	private String message;
-	
-	
+
+	public Message() {
+		this.id = 0;
+		this.user = "";
+		this.message = "";
+	}
 
 	public Message(int id, String user, String message) {
 		super();
