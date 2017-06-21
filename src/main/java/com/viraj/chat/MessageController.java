@@ -3,6 +3,8 @@ package com.viraj.chat;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -36,6 +38,15 @@ public class MessageController {
 		service.sendMessage((String) model.get("name"), message.getMessage());
 		model.clear();
 		return "redirect:/show-chat";
+	}
+
+	private String getCurrentUsername(ModelMap model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails)
+			return ((UserDetails) principal).getUsername();
+
+		return principal.toString();
 	}
 
 }
