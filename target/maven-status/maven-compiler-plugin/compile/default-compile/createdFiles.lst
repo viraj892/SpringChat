@@ -1,0 +1,5 @@
+com\viraj\chat\Message.class
+com\viraj\chat\MessageService.class
+com\viraj\login\LoginService.class
+com\viraj\chat\MessageController.class
+com\viraj\login\LoginController.class
