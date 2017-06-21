@@ -24,7 +24,6 @@ public class MessageController {
 	public String showChat(ModelMap model) {
 		model.addAttribute("message", new Message(0, (String) model.get("name"), ""));
 		model.addAttribute("messages", service.getMessages());
-		System.out.println(model.get("name"));
 		return "show-chat";
 	}
 

@@ -8,11 +8,15 @@
 </head>
 <body>
 	<div class="container">
-		<h3>Hello ${name}!</h3> <br />
+		<h3>Hello ${name}!</h3>
+		<br />
 		<form:form action="/send-message" method="POST" commandName="message">
-			<form:input path="message" type="text" class="form-control" required="required"/> <input
-				type="submit" value="Send" />
-				<form:errors path="message" cssClass="text-warning"/>
+			<form:hidden path="id" />
+			<form:hidden path="user" />
+			<form:input path="message" type="text" class="form-control"
+				required="required" />
+			<input type="submit" value="Send" />
+			<form:errors path="message" cssClass="text-warning" />
 		</form:form>
 	</div>
 
