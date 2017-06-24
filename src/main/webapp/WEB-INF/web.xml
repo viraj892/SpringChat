@@ -5,7 +5,7 @@
   <display-name>Citual Chat</display-name>
   
   <welcome-file-list>
-    <welcome-file>/login.jsp</welcome-file>
+    <welcome-file>/register.jsp</welcome-file>
   </welcome-file-list>
   
   <servlet>
@@ -33,4 +33,8 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<error-page>
+	    <location>/WEB-INF/views/error.jsp</location>
+	</error-page>
 </web-app>

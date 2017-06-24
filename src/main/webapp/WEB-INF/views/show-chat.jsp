@@ -25,7 +25,13 @@
 		${message.user}: ${message.message} <br />
 		</c:forEach>
 	</div>
-	
+	<div class="container">
+		<form:form action="/list-users" method="POST">
+			List of all users in the database: <input type="submit"
+				value="Show All Users" />
+		</form:form>
+	</div>
+
 	<a href="/logout">Logout</a>
 
 	<script src="webjars/jquery/3.2.1/jquery.min.js"></script>

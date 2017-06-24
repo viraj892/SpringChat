@@ -1,3 +1,14 @@
 com\viraj\chat\Message.class
-com\viraj\chat\MessageService.class
+com\viraj\ExceptionHandlers\ExceptionController.class
+com\viraj\registration\RegistrationController.class
+com\viraj\rest\MessageRestController.class
+com\viraj\security\SecurityConfiguration.class
+com\viraj\dao\UserService.class
 com\viraj\chat\MessageController.class
+com\viraj\login\LogoutController.class
+com\viraj\dao\UserDao.class
+com\viraj\dao\UserDaoImpl.class
+com\viraj\chat\MessageService.class
+com\viraj\dao\User.class
+com\viraj\login\WelcomeController.class
+com\viraj\dao\UserServiceImpl.class

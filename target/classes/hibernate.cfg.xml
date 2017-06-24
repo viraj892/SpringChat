@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<property name="connection.driver_class">${jdbc.driverClassName}</property>
+		<property name="connection.url">${jdbc.databaseurl}</property>
+		<property name="connection.username">${jdbc.username}</property>
+		<property name="connection.password">${jdbc.password}</property>
+		<property name="dialect">${jdbc.dialect}</property>
+
+		<property name="connection.pool_size">${jdbc.poolSize}</property>
+
+		<property name="current_session_context_class">thread</property>
+
+		<property name="cache.provider_class">${jdbc.cacheProvider}</property>
+
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<mapping class="com.viraj.dao.User" />
+
+	</session-factory>
+</hibernate-configuration>

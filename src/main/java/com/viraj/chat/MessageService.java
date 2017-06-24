@@ -1,24 +1,20 @@
 package com.viraj.chat;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import com.viraj.chat.Message;
 
 @Service
 public class MessageService {
 	private static List<Message> messages = new ArrayList<Message>();
-	private static int messageCount = 3;
- 
-	static {
-		messages.add(new Message(1, "viraj", "Hi"));
-		messages.add(new Message(2, "kaushik", "hello"));
-		messages.add(new Message(3, "cletus", "Hey!"));
-	}
+	private static int messageCount = 0;
 
 	/*
 	 * TODO
@@ -29,6 +25,15 @@ public class MessageService {
 
 	public void sendMessage(String user, String message) {
 		messages.add(new Message(++messageCount, user, message));
+	}
+
+	public String getCurrentUsername(ModelMap model) {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails)
+			return ((UserDetails) principal).getUsername();
+
+		return principal.toString();
 	}
 
 	/*
